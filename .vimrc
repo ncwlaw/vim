@@ -1,3 +1,4 @@
+" This is Nathan's Vim File
 " Remap Escape Key
 imap jk <ESC>
 " Don't try to be vi compatible
