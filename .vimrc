@@ -1,6 +1,43 @@
-" This is Nathan's Vim File
-" Remap Escape Key
-imap jk <ESC>
+" Where to introduce all vim plugins
+call plug#begin('~/vim/plugged')
+
+" Plug 'itchyny/vim-haskell-indent'
+Plug 'dag/vim2hs'
+Plug 'godlygeek/tabular'
+Plug 'scrooloose/syntastic'
+Plug 'takac/vim-hardtime'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-surround'
+Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-repeat'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
+" Map <leader>
+let mapleader = ","
+
+" Rebind escape key
+inoremap <C-Space> <Esc>
+" Fixes issue where control space results in repeating most recent text
+imap <Nul> <C-Space>
+map  <Nul> <Nop>
+vmap <Nul> <Nop>
+cmap <Nul> <Nop>
+nmap <Nul> <Nop>
+
+" Increase Window Scroll
+noremap <C-y> 3<C-y>
+noremap <C-e> 3<C-e>
+
 " Don't try to be vi compatible
 set nocompatible
 
@@ -32,6 +69,7 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 set number
 set relativenumber
+
 " Show file stats
 set ruler
 
@@ -101,11 +139,55 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
-" Color scheme (terminal)
-set t_Co=256
-set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-" put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
-" in ~/.vim/colors/ and uncomment:
-" colorscheme solarized
+" Folding
+set foldmethod=syntax
+set foldlevelstart=20
+set foldlevel=1
+" ==== Plugins ===
+
+"" YouCompleteMe
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"" vim-javascript
+
+"" Execute HardTime at every buffer
+let g:hardtime_default_on = 1
+
+"" airline, a powerline replacement
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t'
+let g:airline_solarized_bg='onedark'
+
+"" Syntastic
+let g:syntastic_auto_jump=0
+let g:syntastic_enable_signs=1
+
+"" Colors and type------------------------------------------------------------
+set anti enc=utf-8
+set guifont=Source\ Code\ Pro\ for\ Powerline:h13
+
+" vim-colors-solarized options
+set t_Co=256                        " force vim to use 256 colors
+let g:solarized_termcolors=256      " use solarized 256 fallback
+
+syntax enable
+" set background=dark
+colorscheme onedark
+if has('gui_running')
+    set go-=T
+endif
+
+" === End ===
+
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
