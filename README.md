@@ -37,7 +37,7 @@ sudo apt-get remove vim vim-runtime gvim
 cd ~
 git clone https://github.com/vim/vim.git
 cd vim
-./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --with-ruby-command=/home/jaguar/.rvm/rubies/ruby-2.3.2/bin/ruby --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope
+./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope
 
 cd ~/vim
 sudo make install
@@ -47,4 +47,8 @@ Vim
 - :PlugInstall
 - cd ~/vim/plugged/YouCompleteMe
 - ./install.py --all
+
+Issues
+-------------
+- If you have issues with rvm, just make a symbolic link from the default rvm to the /usr/lib folder
 
