@@ -44,6 +44,10 @@ Vim
 - cd ~/vim/plugged/YouCompleteMe
 - ./install.py --all
 
+- Install Parameters for subset of completers:
+    - ruby: --racer-completer
+    - javascript: --tern-completer
+
 Issues
 -------------
 - If you have issues with rvm, just make a symbolic link from the default rvm to the /usr/lib folder
