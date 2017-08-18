@@ -34,13 +34,9 @@ sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 sudo apt-get remove vim vim-runtime gvim
 
 - Install VIM and dependencies
-
-cd ~
-git clone https://github.com/vim/vim.git
-cd vim
-./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope
-cd ~/vim
-sudo make install
+- cd ~ && git clone https://github.com/vim/vim.git
+- cd ~/vim && ./configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-pythoninterp=yes --with-python-config-dir=/usr/lib/python2.7/config --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope
+- cd ~/vim && sudo make install
 
 Vim
 -------------
